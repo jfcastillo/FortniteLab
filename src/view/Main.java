@@ -27,10 +27,12 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 //		Player p1 = new Player("1", "Felipe", "PS4", 220, 110, 12, 2, 112);
-//		IHashTable<Integer, Player> ht = new HashTable<>();
+		IHashTable<Integer, Player> ht = new HashTable<>();
 //		ht.tableInsert(p1.getPing(), p1);
 //		System.out.println(ht.tableRetrieve(112).getValue().getName());
-		
+		for (int i = 90; i < 500;i++) {
+			System.out.println(i%100003);
+		}
 		launch(args);		
 		
 		

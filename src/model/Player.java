@@ -10,6 +10,7 @@ public class Player {
 	private int winMatchs;
 	private int loseMatchs;
 	private int ping;
+	private double skill;
 	
 	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int loseMatchs, int ping) {		
 		this.id = id;
@@ -85,6 +86,15 @@ public class Player {
 	public void setLoseMatchs(int loseMatchs) {
 		this.loseMatchs = loseMatchs;
 	}
+
+	public double getSkill() {
+		return skill;
+	}
+
+	public void setSkill(double skill) {
+		this.skill = skill;
+	}
+	
 	
 	
 
