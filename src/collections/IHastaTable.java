@@ -3,8 +3,9 @@ package collections;
 public interface IHastaTable<T> {
 	void createTable();
 	boolean isEmpty();
-	
-	void insert(T elem);
-	void search(T elem);
-
+	long tableLength();
+	void talbeInsert(T newItem);
+	void tableDelete(T searchKey);
+	T tableRetrieve(T searchKey);
+	long size();
 }

@@ -49,7 +49,6 @@ public class SettingsController implements Initializable{
 	}
 	@FXML
     void openMenu(ActionEvent event) {
-		System.out.println("openMenu");
 		String nickname = txtNickname.getText();
 		String platform = cbPlatform.getValue();
 		if (nickname.length() == 0 || platform.length() == 0) 
