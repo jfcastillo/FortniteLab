@@ -22,6 +22,14 @@ public class Player {
 		this.ping = ping;
 	}
 
+	public int getPing() {
+		return ping;
+	}
+
+	public void setPing(int ping) {
+		this.ping = ping;
+	}
+
 	public String getId() {
 		return id;
 	}

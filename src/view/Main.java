@@ -2,6 +2,7 @@ package view;
 	
 import java.io.IOException;
 
+import collections.HashTable;
 import collections.IHashTable;
 import collections.ILinkedList;
 import collections.IStack;
@@ -25,8 +26,11 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-//		IHastHTable<>
-		Player p1 = new Player("1", "Felipe", "PS4", 220, 110, 12, 2, 112);
+//		Player p1 = new Player("1", "Felipe", "PS4", 220, 110, 12, 2, 112);
+//		IHashTable<Integer, Player> ht = new HashTable<>();
+//		ht.tableInsert(p1.getPing(), p1);
+//		System.out.println(ht.tableRetrieve(112).getValue().getName());
+		
 		launch(args);		
 		
 		

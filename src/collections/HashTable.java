@@ -11,6 +11,8 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 
 	public HashTable() {
 		size = INITIAL_SIZE;
+		length = 0;
+		createTable();
 	}
 
 	@Override
@@ -40,6 +42,7 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 	@Override
 	public void tableInsert(K key, V newItem) {
 		entries[hashFunction(key)] = new HashEntry<K,V>(key, newItem);
+		length++;
 		
 	}
 	public int hashFunction(K key) {
@@ -51,21 +54,28 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 		int index = hashFunction(searchKey);
 		if (entries[index].getKey() == searchKey) {
 			entries[index] = null;
+			length--;
 		}
 		
 	}
 
 	@Override
-	public K tableRetrieve(K searchKey) {
-		// TODO Auto-generated method stub
-		//castear el return con (K)
-		return null;
+	public HashEntry<K, V> tableRetrieve(K searchKey) {
+		int index = hashFunction(searchKey);
+		HashEntry valueFound = entries[index];
+		HashEntry ret = null;
+		if (valueFound.getKey() == searchKey) {
+			ret = entries[index];
+		}		
+		return ret;
 	}
 
+	/**
+	 * Return the size of the hash table
+	 */
 	@Override
-	public long size() {
-		// TODO Auto-generated method stub
-		return 0;
+	public long size() {		
+		return size;
 	}
 
 }
