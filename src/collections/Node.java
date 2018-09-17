@@ -1,26 +1,26 @@
 package collections;
 
-public class Node<P> {
+public class Node<T> {
 	
-	private Node<P> next;
-	private P info;
+	private Node<T> next;
+	private T info;
 	
-	public Node(P elem){
+	public Node(T elem){
 		info = elem;
 	}
 	public boolean NodoEnlazadoSimple() {
 		return true;
 	}
-	public Node<P> getNext() {
+	public Node<T> getNext() {
 		return next;
 	}
-	public void setNext(Node<P> next) {
+	public void setNext(Node<T> next) {
 		this.next = next;
 	}
-	public P getInfo() {
+	public T getInfo() {
 		return info;
 	}
-	public void setInfo(P info) {
+	public void setInfo(T info) {
 		this.info = info;
 	}
 	public void disconectNext() {
