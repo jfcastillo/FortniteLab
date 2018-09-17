@@ -1,11 +1,12 @@
 package collections;
 
-public class HashTable<T> implements IHastaTable<T> {
+public class HashTable<K,V> implements IHashTable<K,V> {
 	//Prime number used to the hash table size and his function
 	public static final int INITIAL_SIZE = 100003;
+	private int length;
 	private int size;
 	private long amountOfElements;
-	private Object[] entries;
+	private HashEntry[] entries;
 //	private ILinkedList<T>[] entries;
 
 	public HashTable() {
@@ -18,38 +19,46 @@ public class HashTable<T> implements IHastaTable<T> {
 		    
 		
 		int[] arr = new int[2];
-		entries = new Object [size];
+		entries = new HashEntry [size];
 		
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return entries[0] == null;
 	}
 
+	/**
+	 * Determines the number of items in the table.
+	 */
 	@Override
 	public long tableLength() {
-		// TODO Auto-generated method stub
-		return 0;
+		return length;
 	}
 
 	@Override
-	public void talbeInsert(T newItem) {
-		// TODO Auto-generated method stub
+	public void tableInsert(K key, V newItem) {
+		entries[hashFunction(key)] = new HashEntry<K,V>(key, newItem);
+		
+	}
+	public int hashFunction(K key) {
+		return (Integer)key%INITIAL_SIZE;
+	}
+
+	@Override
+	public void tableDelete(K searchKey) {
+		int index = hashFunction(searchKey);
+		if (entries[index].getKey() == searchKey) {
+			entries[index] = null;
+		}
 		
 	}
 
 	@Override
-	public void tableDelete(T searchKey) {
+	public K tableRetrieve(K searchKey) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public T tableRetrieve(T searchKey) {
-		// TODO Auto-generated method stub
-		//castear el return con (T)
+		//castear el return con (K)
 		return null;
 	}
 

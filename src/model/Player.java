@@ -9,8 +9,9 @@ public class Player {
 	private int deaths;
 	private int winMatchs;
 	private int loseMatchs;
+	private int ping;
 	
-	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int loseMatchs) {		
+	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int loseMatchs, int ping) {		
 		this.id = id;
 		this.name = name;
 		this.platform = platform;
@@ -18,6 +19,7 @@ public class Player {
 		this.deaths = deaths;
 		this.winMatchs = winMatchs;
 		this.loseMatchs = loseMatchs;
+		this.ping = ping;
 	}
 
 	public String getId() {
