@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JLabel;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,12 +34,17 @@ public class MainViewController implements Initializable{
     @FXML
     private Label lblUserName;
 
+    SettingsController p;
 	
 
 	public MainViewController() {
-		nickname = "";
+		nickname = "" ;
+		p= new SettingsController();
+		lblUserName= new Label(p.txt());
+
 		
 		
+		//username();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -48,6 +55,14 @@ public class MainViewController implements Initializable{
 		nickname = username;
 		
 	}
+	
+	public void username() {
+		
+		//lblUserName.setText("ser");
+		
+		
+	}
+	
 	
 
 }

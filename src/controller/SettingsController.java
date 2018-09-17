@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Player;
 
 public class SettingsController implements Initializable{
 	public static final String[] PLATFORMS = {"PS4", "XBOX", "SWICHT"}; 
@@ -29,12 +30,22 @@ public class SettingsController implements Initializable{
     @FXML
     private Button btnOk;
 
+    private Player m;
+    private String nickname;
     
     private MainViewController menu;
     
 
 	public SettingsController() {
 		
+		txtNickname= new TextField();
+	}
+	
+	
+	public String txt() {
+		
+		String m= txtNickname.getText();
+		return m;
 		
 	}
 
@@ -49,8 +60,9 @@ public class SettingsController implements Initializable{
 	}
 	@FXML
     void openMenu(ActionEvent event) {
-		String nickname = txtNickname.getText();
+		 nickname = txtNickname.getText();
 		String platform = cbPlatform.getValue();
+		
 		if (nickname.length() == 0 || platform.length() == 0) 
 			JOptionPane.showMessageDialog(null, "Ingrese el usuario y la plataforma");		
 		else {
@@ -71,4 +83,11 @@ public class SettingsController implements Initializable{
 		}	
 		
     }
+
+
+
+	
+	
+	
+	
 }
