@@ -6,22 +6,26 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 	private int length;
 	private int size;
 	private long amountOfElements;
-	private HashEntry[] entries;
+	private List<HashEntry<K, V>> [] entries;
+//	private HashEntry[] entries;
 //	private ILinkedList<T>[] entries;
 
 	public HashTable() {
 		size = INITIAL_SIZE;
 		length = 0;
+		entries = new List[size];
 		createTable();
 	}
 
 	@Override
-	public void createTable() {
+	public void createTable() {		
+		for (int i = 0; i < entries.length; i++) {
+			entries [i] = new List<>(); 
+		}
 		
-		    
 		
-		int[] arr = new int[2];
-		entries = new HashEntry [size];
+//		entries = new List<>();
+//		entries = new HashEntry [size];
 		
 	}
 
@@ -41,7 +45,10 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 
 	@Override
 	public void tableInsert(K key, V newItem) {
-		entries[hashFunction(key)] = new HashEntry<K,V>(key, newItem);
+		int index = hashFunction(key);
+		HashEntry<K, V> entry = new HashEntry<K, V>(key, newItem);		
+		entries [hashFunction(key)].add(entry); 
+//		entries[hashFunction(key)] = new HashEntry<K,V>(key, newItem);
 		length++;
 		
 	}
@@ -52,21 +59,21 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 	@Override
 	public void tableDelete(K searchKey) {
 		int index = hashFunction(searchKey);
-		if (entries[index].getKey() == searchKey) {
-			entries[index] = null;
-			length--;
-		}
+//		if (entries[index].getKey() == searchKey) {
+//			entries[index] = null;
+//			length--;
+//		}
 		
 	}
 
 	@Override
-	public HashEntry<K, V> tableRetrieve(K searchKey) {
+	public List<HashEntry<K, V>> tableRetrieve(K searchKey) {
 		int index = hashFunction(searchKey);
-		HashEntry valueFound = entries[index];
-		HashEntry ret = null;
-		if (valueFound.getKey() == searchKey) {
-			ret = entries[index];
-		}		
+		List<HashEntry<K, V>> valueFound = entries[index];
+		List<HashEntry<K, V>> ret = null;
+//		if (valueFound.ge == searchKey) {
+//			ret = entries[index];
+//		}		
 		return ret;
 	}
 

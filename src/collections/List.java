@@ -176,6 +176,17 @@ public class List<T> implements ILinkedList<T>, IStack<T>{
 		
 	}
 
+	@Override
+	public T search(T elem) {
+		Node ret = null;
+		for (Node<T> f = first; f != null ; f.getNext()) {
+			if (f.getInfo().equals(elem)) {
+				ret = f;
+			}
+		}
+		return (T) ret.getInfo();
+	}
+
 	
 
 }

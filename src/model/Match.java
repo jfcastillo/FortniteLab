@@ -2,6 +2,8 @@ package model;
 
 public class Match {
 	private String id;	
+	private int pingMin;
+	private int pingMax;
 	//Jugadores de lista enlazada
 	private Player players;
 	public Match(String id) {
@@ -33,6 +35,47 @@ public class Match {
 			
 			return probably;
 		}
+
+
+		public String getId() {
+			return id;
+		}
+
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
+
+		public int getPingMin() {
+			return pingMin;
+		}
+
+
+		public void setPingMin(int pingMin) {
+			this.pingMin = pingMin;
+		}
+
+
+		public int getPingMax() {
+			return pingMax;
+		}
+
+
+		public void setPingMax(int pingMax) {
+			this.pingMax = pingMax;
+		}
+
+
+		public Player getPlayers() {
+			return players;
+		}
+
+
+		public void setPlayers(Player players) {
+			this.players = players;
+		}
+		
 	
 
 }

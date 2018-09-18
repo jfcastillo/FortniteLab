@@ -7,5 +7,6 @@ public interface ILinkedList<T> {
 	boolean exist(T elem);
 	T get(int pos);
 	boolean isEmpty();
+	T search(T elem);
 	
 }

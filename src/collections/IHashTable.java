@@ -6,6 +6,6 @@ public interface IHashTable<K,V> {
 	long tableLength();
 	void tableInsert(K key,V newItem);
 	void tableDelete(K searchKey);
-	HashEntry<K, V> tableRetrieve(K searchKey);
+	List<HashEntry<K, V>>tableRetrieve(K searchKey);
 	long size();
 }
