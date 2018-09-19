@@ -30,9 +30,9 @@ public class Main extends Application {
 //		IHashTable<Integer, Player> ht = new HashTable<>();
 //		ht.tableInsert(p1.getPing(), p1);
 //		System.out.println(ht.tableRetrieve(112).getValue().getName());
-		for (int i = 90; i < 500;i++) {
-			System.out.println(i%100003);
-		}
+//		for (int i = 90; i < 500;i++) {
+//			System.out.println(i%100003);
+//		}
 		launch(args);		
 		
 		

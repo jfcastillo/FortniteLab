@@ -7,9 +7,11 @@ public class Fortnite {
 	private ILinkedList<Match> matches;
 	private IQueue<Player> playerInQueue;
 	private IHashTable<Double, Player> players;
+	private Player actualPlayer;
 	//------------------------------------------------------------------------------------
 
 	public Fortnite() {
+		
 		matches = new List<>();
 		playerInQueue = new Queue<>();
 		players = new HashTable<>();
@@ -100,7 +102,14 @@ public class Fortnite {
 		
 	}
 	public void createPlayer(String username, String platform) {
-		Player p1= new Player(username, platform,(int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, "");
+		actualPlayer= new Player(username, platform, Player.NORMAL);
+	}
+	public Player getActualPlayer() {
+		return actualPlayer;
+	}
+	public void makeMatch() {
+		actualPlayer.setStatus(Player.IN_QUEUE);
+		
 	}
 	
 
