@@ -1,26 +1,29 @@
 package model;
 
 public class Player {
-	
+	public static final String IN_QUEUE = "inQueue";
+	public static final String NORMAL = "normal";
 	private String id;
 	private String name;
 	private String platform;
 	private int kills;
 	private int deaths;
 	private int winMatchs;
-	private int loseMatchs;
+	private int matchsPlayed;
 	private int ping;
 	private double skill;
+	private String status;
 	
-	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int loseMatchs, int ping) {		
+	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int matchsPlayed, int ping, String status) {		
 		this.id = id;
 		this.name = name;
 		this.platform = platform;
 		this.kills = kills;
 		this.deaths = deaths;
 		this.winMatchs = winMatchs;
-		this.loseMatchs = loseMatchs;
+		this.matchsPlayed = matchsPlayed;
 		this.ping = ping;
+		this.status = status;
 	}
 
 	public int getPing() {
@@ -79,12 +82,12 @@ public class Player {
 		this.winMatchs = winMatchs;
 	}
 
-	public int getLoseMatchs() {
-		return loseMatchs;
+	public int getMatchsPlayed() {
+		return matchsPlayed;
 	}
 
-	public void setLoseMatchs(int loseMatchs) {
-		this.loseMatchs = loseMatchs;
+	public void setMatchsPlayed(int loseMatchs) {
+		this.matchsPlayed = loseMatchs;
 	}
 
 	public double getSkill() {
@@ -93,6 +96,18 @@ public class Player {
 
 	public void setSkill(double skill) {
 		this.skill = skill;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void calculateSkill() {
+		skill = (kills/deaths) +(winMatchs/matchsPlayed);
 	}
 	
 	
