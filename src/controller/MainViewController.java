@@ -36,6 +36,7 @@ public class MainViewController implements Initializable{
 
     SettingsController p;
 	
+    //comentario para probar el merge
 
 	public MainViewController() {
 		nickname = "" ;
@@ -65,4 +66,4 @@ public class MainViewController implements Initializable{
 	
 	
 
-}
+} 
