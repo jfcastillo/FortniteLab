@@ -48,12 +48,26 @@ public class Match {
 
 
 		private Player generatorPlayer() {
+			Player p1=null;
+			int m=(int)(Math.random()*3)+1;
 			
-		Player p1= new Player("", "", "",(int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, "");
-		
+			if(m==1) {
+		 p1= new Player( "", Player.PS4, "");
+			}else if(m==2) {
+				p1= new Player( "",Player.SWITCH, "");				
+			}else if(m==3) {
+				p1= new Player( "",Player.XBOX, "");		
+				}
 		
 		return p1;
 	}
+		public String generatorName() {
+			String m="";
+			for (int i = 0; i < 100; i++) {
+				
+			}
+			return m;
+		}
 
 		public int getId() {
 			return id;
