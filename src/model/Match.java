@@ -1,5 +1,9 @@
 package model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import collections.ILinkedList;
 import collections.List;
 
@@ -18,8 +22,38 @@ public class Match {
 		this.pingMax = pingMax;
 		this.size = 0;
 		players = new List();
+		randomPlayers();
 	}
+	 
+	 public void randomPlayers() {
+		 
+		
+		 try {
+			 File playerFile= new File("./data/randomPalyer.txt");
+			playerFile.createNewFile();
+			
+			FileWriter writerPlayer = new FileWriter(playerFile); 
+			for (int i = 0; i < 10001; i++) {
+				writerPlayer.write(generatorPlayer()+"\n");
+				
+			}
+			writerPlayer.flush();
+			writerPlayer.close();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+			
+	 }
 
+
+		private Player generatorPlayer() {
+			
+		Player p1= new Player("", "", "",(int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, "");
+		
+		
+		return p1;
+	}
 
 		public int getId() {
 			return id;
