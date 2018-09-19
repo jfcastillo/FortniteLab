@@ -99,7 +99,9 @@ public class Fortnite {
 		return matchFound;
 		
 	}
-	
+	public void createPlayer(String username, String platform) {
+		Player p1= new Player(username, platform,(int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, (int)(Math.random()*1000)+1, "");
+	}
 	
 
 }
