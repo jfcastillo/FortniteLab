@@ -70,11 +70,11 @@ public class HashTable<K,V> implements IHashTable<K,V> {
 	public List<HashEntry<K, V>> tableRetrieve(K searchKey) {
 		int index = hashFunction(searchKey);
 		List<HashEntry<K, V>> valueFound = entries[index];
-		List<HashEntry<K, V>> ret = null;
+		
 //		if (valueFound.ge == searchKey) {
 //			ret = entries[index];
 //		}		
-		return ret;
+		return valueFound;
 	}
 
 	/**
