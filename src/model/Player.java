@@ -3,6 +3,9 @@ package model;
 public class Player {
 	public static final String IN_QUEUE = "inQueue";
 	public static final String NORMAL = "normal";
+	public static final String PS4="PS4";
+	public static final String SWITCH="Switch";
+	public static final String XBOX="Xbox";
 	private String id;
 	private String name;
 	private String platform;
@@ -14,15 +17,16 @@ public class Player {
 	private double skill;
 	private String status;
 	
-	public Player(String id, String name, String platform, int kills, int deaths, int winMatchs, int matchsPlayed, int ping, String status) {		
-		this.id = id;
+	public Player( String name, String platform,String status) {		
+		
 		this.name = name;
 		this.platform = platform;
-		this.kills = kills;
-		this.deaths = deaths;
-		this.winMatchs = winMatchs;
-		this.matchsPlayed = matchsPlayed;
-		this.ping = ping;
+		this.kills=(int)(Math.random()*100);
+		this.deaths=(int)(Math.random()*100);
+		this.winMatchs=(int)(Math.random()*50);
+		this.matchsPlayed= (int)(Math.random()*100)+1;
+		this.ping= (int)(Math.random()*300)+1;
+		
 		this.status = status;
 	}
 
