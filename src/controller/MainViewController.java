@@ -34,26 +34,32 @@ public class MainViewController implements Initializable{
     @FXML
     private Label lblUserName;
 
-    SettingsController p;
+    private SettingsController settings;
 	
-    //comentario para probar el merge
 
-	public MainViewController() {
-		nickname = "" ;
-		p= new SettingsController();
-		lblUserName= new Label(p.txt());
 
-		
-		
-		//username();
-	}
+//	public MainViewController(SettingsController s) {
+//		nickname = "" ;
+//		settings = s;
+//
+//
+//		
+//		
+//		//username();
+//	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		lblUserName.setText(nickname); 
+
 		
 	}
 	public void setUsername(String username) {
 		nickname = username;
+		
+	}
+	public void param(SettingsController s, String username) {
+		settings = s;
+		lblUserName.setText(username); 
 		
 	}
 	

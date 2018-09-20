@@ -2,6 +2,7 @@
 package controller;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.server.LoaderHandler;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -16,6 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Player;
 
@@ -40,6 +43,7 @@ public class SettingsController implements Initializable{
 	public SettingsController() {
 		
 		txtNickname= new TextField();
+//		menu = new MainViewController(this);
 	}
 	
 	
@@ -61,8 +65,9 @@ public class SettingsController implements Initializable{
 	}
 	@FXML
     void openMenu(ActionEvent event) {
-		 nickname = txtNickname.getText();
+		nickname = txtNickname.getText();
 		String platform = cbPlatform.getValue();
+		System.out.println(nickname+","+platform);
 		
 		if (nickname.length() == 0 || platform.length() == 0) 
 			JOptionPane.showMessageDialog(null, "Ingrese el usuario y la plataforma");		
@@ -70,10 +75,19 @@ public class SettingsController implements Initializable{
 //			menu = new MainViewController(nickname);
 			
 			try {
-				Parent menuViewParent = FXMLLoader.load(getClass().getResource("/designs/Menu.fxml"));
+//				Stage window = new Stage();
+				FXMLLoader loader = new FXMLLoader();
+//				Parent menuViewParent = FXMLLoader.load(getClass().getResource("/designs/Menu.fxml"));
+				AnchorPane menuViewParent = (AnchorPane) loader.load(getClass().getResource("/designs/Menu.fxml").openStream());
+				MainViewController mainControllerInstance = (MainViewController)loader.getController();
+				mainControllerInstance.param(this, nickname);
+				
 				Scene menuViewScene = new Scene(menuViewParent);
 				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				
 				window.setScene(menuViewScene);
+//				window.alwaysOnTopProperty();
+//				window.initModality(Modality.APPLICATION_MODAL);
 				window.show();
 				
 			} catch (IOException e) {
