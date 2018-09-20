@@ -110,4 +110,19 @@ public class Player implements Comparable<Player>{
 	public String toString() {
 		return name+", "+platform+", Kills: "+kills+", Deaths: "+deaths+", win matchs: "+winMatchs+", matchs Played: "+matchsPlayed+", Ping: "+ping+", Skill: "+skill+", "+status;
 	}
+	
+	@Override
+	public int compareTo(Player p) {
+	
+		int comp = 0;
+		
+		if(this.getSkill()>p.getSkill()) {
+			comp=1;
+		}
+		else{
+			comp=-1;
+		}
+		
+		return comp;	
+	}
 }
