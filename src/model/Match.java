@@ -12,6 +12,9 @@ import collections.List;
 import exception.PlayerNotAddedMatchException;
 
 public class Match {
+	
+	public static int MAX_KILLS_PER_MATCH = 98;
+	
 	private int id;	
 	private int pingMin;
 	private int pingMax;
@@ -161,6 +164,7 @@ public void addPlayerMatch(Player p1) throws PlayerNotAddedMatchException {
 			
 			return probably;
 		}
-	
+		
+
 
 }

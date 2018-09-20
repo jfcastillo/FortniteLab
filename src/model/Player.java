@@ -1,6 +1,6 @@
 package model;
 
-public class Player {
+public class Player implements Comparable<Player>{
 	public static final String IN_QUEUE = "inQueue";
 	public static final String NORMAL = "normal";
 	public static final String PS4="PS4";
@@ -103,17 +103,11 @@ public class Player {
 	}
 
 	public void calculateSkill() {
-		skill = (kills/deaths) +(winMatchs/matchsPlayed);
+		skill = (kills/(Match.MAX_KILLS_PER_MATCH*matchsPlayed)) +(winMatchs/matchsPlayed);
 	}
 	
 	@Override
 	public String toString() {
 		return name+", "+platform+", Kills: "+kills+", Deaths: "+deaths+", win matchs: "+winMatchs+", matchs Played "+matchsPlayed+", Ping: "+ping+", Skill: "+skill+", "+status;
 	}
-	
-	
-	
-
-	
-
 }
