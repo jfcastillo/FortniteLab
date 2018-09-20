@@ -71,19 +71,20 @@ public void addPlayerMatch(Player p1) throws PlayerNotAddedMatchException {
 			int m=(int)(Math.random()*3)+1;
 			
 			if(m==1) {
-		 p1= new Player( "", Player.PS4, "");
+		 p1= new Player(generatorName() , Player.PS4, Player.IN_QUEUE);
 			}else if(m==2) {
-				p1= new Player( "",Player.SWITCH, "");				
+				p1= new Player( generatorName(),Player.SWITCH, Player.NORMAL);				
 			}else if(m==3) {
-				p1= new Player( "",Player.XBOX, "");		
+				p1= new Player(generatorName(),Player.XBOX, Player.NORMAL);		
 				}
 		
 		return p1;
 	}
 		public String generatorName() {
 			String m="";
-			for (int i = 0; i < 100; i++) {
-				
+			for (int i = 0; i < 6; i++) {
+				char s= (char)(Math.random()*26+'a');
+				m+=s;
 			}
 			return m;
 		}
