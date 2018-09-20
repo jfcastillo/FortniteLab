@@ -1,11 +1,15 @@
 package model;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 
 import collections.ILinkedList;
 import collections.List;
+import exception.PlayerNotAddedMatchException;
 
 public class Match {
 	private int id;	
@@ -27,24 +31,39 @@ public class Match {
 	 
 	 public void randomPlayers() {
 		 
-		
-		 try {
-			 File playerFile= new File("./data/randomPalyer.txt");
-			playerFile.createNewFile();
 			
-			FileWriter writerPlayer = new FileWriter(playerFile); 
+		 try {
+			 File playerFile= new File("./data/randomPlayer.txt");
+			playerFile.createNewFile();
+			 FileOutputStream outPlayer= new FileOutputStream(playerFile);
+			 ObjectOutputStream objectPlayer= new ObjectOutputStream(outPlayer);
 			for (int i = 0; i < 10001; i++) {
-				writerPlayer.write(generatorPlayer()+"\n");
+				objectPlayer.writeObject(generatorPlayer()+"\n");
 				
 			}
-			writerPlayer.flush();
-			writerPlayer.close();
+			objectPlayer.close();
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
 			
 	 }
+
+
+public void addPlayerMatch(Player p1) throws PlayerNotAddedMatchException {
+		 
+		 
+		 if(p1!=null) {
+			 players.add(p1);
+			 
+			 
+		 }else {
+			 
+			 	new  PlayerNotAddedMatchException("player not added to game");
+			 
+		 }
+		 
+}
 
 
 		private Player generatorPlayer() {
