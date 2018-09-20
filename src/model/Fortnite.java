@@ -6,7 +6,7 @@ public class Fortnite {
 	
 	private ILinkedList<Match> matches;
 	private IQueue<Player> playerInQueue;
-	private IHashTable<Double, Player> players;
+	private IHashTable<Integer, Player> players;
 	private Player actualPlayer;
 	//------------------------------------------------------------------------------------
 
@@ -33,17 +33,17 @@ public class Fortnite {
 		this.playerInQueue = playerInQueue;
 	}
 
-	public IHashTable<Double, Player> getPlayers() {
+	public IHashTable<Integer, Player> getPlayers() {
 		return players;
 	}
 
-	public void setPlayers(IHashTable<Double, Player> players) {
+	public void setPlayers(IHashTable<Integer, Player> players) {
 		this.players = players;
 	}
 	
 	
 	public void addPlayersHash(Player playerToAdd) {
-		double hashKey = playerToAdd.getSkill();
+		int hashKey = playerToAdd.getPing();
 		if (playerToAdd.getStatus().equals(Player.IN_QUEUE)) {
 			players.tableInsert(hashKey, playerToAdd);
 		}		
@@ -91,6 +91,33 @@ public class Fortnite {
 		}
 		
 	}
+	public void continueMatching(Match m, Player playerToAdd) {
+		double skill = playerToAdd.getSkill();
+		int pingMin = m.getPingMin();
+		int pingMax = m.getPingMax();
+		boolean exit = false;
+		
+		while (m.getSize()<=100) {
+			for (int i = pingMin; i < pingMax && !exit; i++) {
+				
+				if (m.getSize()==100) exit = true;
+				else {
+					ILinkedList<HashEntry<Integer, Player>> list = players.tableRetrieve(i);
+					if (list.size()>0) {
+						for (int j = 0; j < list.size(); j++) {
+							if (m.getSize()==100) exit = true;
+							if (list.get(i).getValue().getSkill()>=skill-50 && list.get(i).getValue().getSkill()<=skill+50) {
+								m.addPlayers(list.get(i).getValue());
+							}
+						}
+					}
+				}
+					
+				
+			}
+			
+		}
+	}
 	public Match searchMatch(int pingMin) {
 		Match matchFound = null;
 		for (int i = 0; i < matches.size(); i++) {
@@ -107,10 +134,7 @@ public class Fortnite {
 	public Player getActualPlayer() {
 		return actualPlayer;
 	}
-	public void makeMatch() {
-		actualPlayer.setStatus(Player.IN_QUEUE);
-		
-	}
+	
 	
 
 }

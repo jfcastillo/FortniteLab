@@ -53,10 +53,7 @@ public class MainViewController implements Initializable{
 
 		
 	}
-	public void setUsername(String username) {
-		nickname = username;
-		
-	}
+	
 	public void param(SettingsController s, String username) {
 		settings = s;
 		lblUserName.setText(username); 

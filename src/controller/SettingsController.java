@@ -67,7 +67,7 @@ public class SettingsController implements Initializable{
     void openMenu(ActionEvent event) {
 		nickname = txtNickname.getText();
 		String platform = cbPlatform.getValue();
-		System.out.println(nickname+","+platform);
+		
 		
 		if (nickname.length() == 0 || platform.length() == 0) 
 			JOptionPane.showMessageDialog(null, "Ingrese el usuario y la plataforma");		
@@ -78,6 +78,8 @@ public class SettingsController implements Initializable{
 //				Stage window = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 //				Parent menuViewParent = FXMLLoader.load(getClass().getResource("/designs/Menu.fxml"));
+				
+				//Don't forget to put openStream();
 				AnchorPane menuViewParent = (AnchorPane) loader.load(getClass().getResource("/designs/Menu.fxml").openStream());
 				MainViewController mainControllerInstance = (MainViewController)loader.getController();
 				mainControllerInstance.param(this, nickname);
