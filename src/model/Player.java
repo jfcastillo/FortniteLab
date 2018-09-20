@@ -6,7 +6,7 @@ public class Player {
 	public static final String PS4="PS4";
 	public static final String SWITCH="Switch";
 	public static final String XBOX="Xbox";
-	private String id;
+	
 	private String name;
 	private String platform;
 	private int kills;
@@ -22,12 +22,12 @@ public class Player {
 		this.name = name;
 		this.platform = platform;
 		this.kills=(int)(Math.random()*100);
-		this.deaths=(int)(Math.random()*100);
+		this.deaths=(int)(Math.random()*100)+1;
 		this.winMatchs=(int)(Math.random()*50);
 		this.matchsPlayed= (int)(Math.random()*100)+1;
-		this.ping= (int)(Math.random()*300)+1;
-		
+		this.ping= (int)(Math.random()*300)+1;		
 		this.status = status;
+		calculateSkill();
 	}
 
 	public int getPing() {
@@ -36,14 +36,6 @@ public class Player {
 
 	public void setPing(int ping) {
 		this.ping = ping;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -112,6 +104,11 @@ public class Player {
 
 	public void calculateSkill() {
 		skill = (kills/deaths) +(winMatchs/matchsPlayed);
+	}
+	
+	@Override
+	public String toString() {
+		return name+", "+platform+", Kills: "+kills+", Deaths: "+deaths+", win matchs: "+winMatchs+", matchs Played "+matchsPlayed+", Ping: "+ping+", Skill: "+skill+", "+status;
 	}
 	
 	

@@ -117,6 +117,9 @@ public class Fortnite {
 			}
 			
 		}
+		for (int i = 0; i < m.getSize(); i++) {
+			System.out.println(m.getPlayers().get(i).toString());
+		}
 	}
 	public Match searchMatch(int pingMin) {
 		Match matchFound = null;
@@ -135,6 +138,28 @@ public class Fortnite {
 		return actualPlayer;
 	}
 	
+	//Metodos para probar
+	public Player generatorPlayer() {
+		Player p1=null;
+		int m=(int)(Math.random()*3)+1;
+		
+		if(m==1) {
+			p1= new Player(generatorName() , Player.PS4, Player.IN_QUEUE);
+		}else if(m==2) {
+			p1= new Player( generatorName(),Player.SWITCH, Player.NORMAL);				
+		}else if(m==3) {
+			p1= new Player(generatorName(),Player.XBOX, Player.NORMAL);		
+			}
 	
+	return p1;
+}
+	public String generatorName() {
+		String m="";
+		for (int i = 0; i < 6; i++) {
+			char s= (char)(Math.random()*26+'a');
+			m+=s;
+		}
+		return m;
+	}
 
 }

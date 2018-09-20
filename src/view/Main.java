@@ -11,6 +11,7 @@ import collections.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Fortnite;
 import model.Player;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,6 +49,7 @@ public class Main extends Application {
 //		for (int i = 90; i < 500;i++) {
 //			System.out.println(i%100003);
 //		}
+		
 		launch(args);		
 		
 		

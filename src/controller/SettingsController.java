@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Fortnite;
 import model.Player;
 
 public class SettingsController implements Initializable{
@@ -38,21 +39,16 @@ public class SettingsController implements Initializable{
     private String nickname;
     
     private MainViewController menu;
+    private Fortnite fortnite;
     
 
 	public SettingsController() {
 		
-		txtNickname= new TextField();
-//		menu = new MainViewController(this);
+
 	}
 	
 	
-	public String txt() {
-		
-		String m= txtNickname.getText();
-		return m;
-		
-	}
+
 
 	
 
@@ -61,6 +57,13 @@ public class SettingsController implements Initializable{
 		cbPlatform.getItems().add(PLATFORMS[0]);
 		cbPlatform.getItems().add(PLATFORMS[1]);
 		cbPlatform.getItems().add(PLATFORMS[2]);
+		for (int i = 0; i < 10000; i++) {
+			fortnite = new Fortnite();
+			Player playerToAdd = fortnite.generatorPlayer();
+			System.out.println(i+" "+playerToAdd.toString());
+			fortnite.addPlayerQueue(playerToAdd);
+			fortnite.addPlayersHash(playerToAdd);
+		}
 		
 	}
 	@FXML

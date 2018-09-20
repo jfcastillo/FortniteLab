@@ -71,7 +71,7 @@ public void addPlayerMatch(Player p1) throws PlayerNotAddedMatchException {
 			int m=(int)(Math.random()*3)+1;
 			
 			if(m==1) {
-		 p1= new Player(generatorName() , Player.PS4, Player.IN_QUEUE);
+				p1= new Player(generatorName() , Player.PS4, Player.IN_QUEUE);
 			}else if(m==2) {
 				p1= new Player( generatorName(),Player.SWITCH, Player.NORMAL);				
 			}else if(m==3) {
