@@ -108,6 +108,6 @@ public class Player implements Comparable<Player>{
 	
 	@Override
 	public String toString() {
-		return name+", "+platform+", Kills: "+kills+", Deaths: "+deaths+", win matchs: "+winMatchs+", matchs Played "+matchsPlayed+", Ping: "+ping+", Skill: "+skill+", "+status;
+		return name+", "+platform+", Kills: "+kills+", Deaths: "+deaths+", win matchs: "+winMatchs+", matchs Played: "+matchsPlayed+", Ping: "+ping+", Skill: "+skill+", "+status;
 	}
 }

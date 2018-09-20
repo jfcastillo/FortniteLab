@@ -49,7 +49,7 @@ public class MainViewController implements Initializable{
 //	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		lblUserName.setText(nickname); 
+
 
 		
 	}
@@ -60,12 +60,10 @@ public class MainViewController implements Initializable{
 		
 	}
 	
-	public void username() {
-		
-		//lblUserName.setText("ser");
-		
-		
-	}
+	@FXML
+    void joinMatch(ActionEvent event) {
+		settings.joinMatch();
+    }
 	
 	
 
