@@ -126,6 +126,7 @@ public void addPlayerMatch(Player p1) throws PlayerNotAddedMatchException {
 
 		public void addPlayers(Player playersToAdd) {
 			players.add(playersToAdd);			
+			size++;
 		}
 		
 		

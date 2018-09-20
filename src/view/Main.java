@@ -49,7 +49,11 @@ public class Main extends Application {
 //		for (int i = 90; i < 500;i++) {
 //			System.out.println(i%100003);
 //		}
-		
+		ILinkedList<Integer> list = new List<>();
+		for (int i = 0; i < 10; i++) {
+			list.add(i);
+		}
+		System.out.println(list.size());
 		launch(args);		
 		
 		

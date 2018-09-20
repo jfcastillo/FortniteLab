@@ -35,8 +35,6 @@ public class SettingsController implements Initializable{
     @FXML
     private Button btnOk;
 
-    private Player m;
-    private String nickname;
     
     private MainViewController menu;
     private Fortnite fortnite;
@@ -68,9 +66,9 @@ public class SettingsController implements Initializable{
 	}
 	@FXML
     void openMenu(ActionEvent event) {
-		nickname = txtNickname.getText();
+		String nickname = txtNickname.getText();
 		String platform = cbPlatform.getValue();
-		
+		fortnite.setActualPlayer(nickname, platform, Player.NORMAL);
 		
 		if (nickname.length() == 0 || platform.length() == 0) 
 			JOptionPane.showMessageDialog(null, "Ingrese el usuario y la plataforma");		
@@ -105,7 +103,10 @@ public class SettingsController implements Initializable{
     }
 
 
-
+	public void joinMatch() {
+		fortnite.getActualPlayer().setStatus(Player.IN_QUEUE);
+		fortnite.addPlayerToMatch(fortnite.getActualPlayer(), (int)(Math.random()*100)+1);
+	}
 	
 	
 	

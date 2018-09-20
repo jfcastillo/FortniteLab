@@ -15,6 +15,7 @@ public class Fortnite {
 		matches = new List<>();
 		playerInQueue = new Queue<>();
 		players = new HashTable<>();
+		actualPlayer = null;
 	}
 
 	public ILinkedList<Match> getMatches() {
@@ -54,6 +55,8 @@ public class Fortnite {
 		}
 	}
 	public void addPlayerToMatch(Player playerToAdd, int idMatch) {
+		System.out.println("Inicio de emparejamiento");
+		Match newMatch = null;
 		int pingMin = 0;
 		int pingMax = 0;
 		int playerPing = playerToAdd.getPing();
@@ -74,39 +77,57 @@ public class Fortnite {
 			pingMax = 400;
 		}
 		if (matches.size()==0) {
-			Match newMatch = new Match(idMatch, pingMin, pingMax);
+			System.out.println("Tamaño igual a 0");
+			newMatch = new Match(idMatch, pingMin, pingMax);
 			newMatch.addPlayers(playerToAdd);
 			matches.add(newMatch);			
 		}
 		else {
 			Match m = searchMatch(pingMin);
+			System.out.println("Tamaño diferente a 0");
 			if (m == null) {
-				Match newMatch = new Match(idMatch, pingMin, pingMax);
+				newMatch = new Match(idMatch, pingMin, pingMax);
 				newMatch.addPlayers(playerToAdd);
 				matches.add(newMatch);	
 			}
 			else {
 				m.addPlayers(playerToAdd);
 			}
+			
 		}
+		continueMatching(newMatch, playerToAdd);
+		
 		
 	}
 	public void continueMatching(Match m, Player playerToAdd) {
 		double skill = playerToAdd.getSkill();
 		int pingMin = m.getPingMin();
 		int pingMax = m.getPingMax();
+		System.out.println("pingmin "+pingMin);
+		System.out.println("pingmin "+pingMax);
 		boolean exit = false;
+		System.out.println("continue matchmaking");
 		
 		while (m.getSize()<=100) {
+			System.out.println("Empezó a buscar los 100 jugadores");
 			for (int i = pingMin; i < pingMax && !exit; i++) {
-				
-				if (m.getSize()==100) exit = true;
+				System.out.println(i);
+				if (m.getSize()==100) {
+					exit = true;
+				}
 				else {
 					ILinkedList<HashEntry<Integer, Player>> list = players.tableRetrieve(i);
 					if (list.size()>0) {
 						for (int j = 0; j < list.size(); j++) {
-							if (m.getSize()==100) exit = true;
-							if (list.get(i).getValue().getSkill()>=skill-50 && list.get(i).getValue().getSkill()<=skill+50) {
+							double skillMin = list.get(i).getValue().getSkill()-4;
+							double skillMax = list.get(i).getValue().getSkill()+4;
+							System.out.println("list "+j );
+							if (m.getSize()==100) {
+								exit = true;
+							}
+							
+							else if (skill>=skillMin && skill<=skillMax) {
+								System.out.println("entra a evaluar skills");
 								m.addPlayers(list.get(i).getValue());
 							}
 						}
@@ -117,8 +138,10 @@ public class Fortnite {
 			}
 			
 		}
+		System.out.println("Terminó de encontrar los 100 jugadores");
 		for (int i = 0; i < m.getSize(); i++) {
-			System.out.println(m.getPlayers().get(i).toString());
+			System.out.println("E   M   P   A   R   E   J   A   M   I   E   N   T   O");
+			System.out.println(i+": "+m.getPlayers().get(i).toString());
 		}
 	}
 	public Match searchMatch(int pingMin) {
@@ -134,8 +157,13 @@ public class Fortnite {
 	public void createPlayer(String username, String platform) {
 		actualPlayer= new Player(username, platform, Player.NORMAL);
 	}
+	
 	public Player getActualPlayer() {
 		return actualPlayer;
+	}
+	
+	public void setActualPlayer(String name, String platform, String status) {
+		actualPlayer = new Player(name, platform, status);
 	}
 	
 	//Metodos para probar
