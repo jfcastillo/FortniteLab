@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-image: url('file:C:/Users/Sebastian/Desktop/Icesi/Estructuras/Repositorios/FortniteLab/data/ranking_background.jpg');" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="22.0" layoutY="75.0" prefHeight="680.0" prefWidth="962.0" style="-fx-background-color: 0000;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="75.0">
+        <columns>
+          <TableColumn prefWidth="300.0" resizable="false" text="Username" />
+          <TableColumn minWidth="0.0" prefWidth="165.5" resizable="false" text="Skill" />
+            <TableColumn prefWidth="165.5" resizable="false" text="Kills" />
+            <TableColumn prefWidth="165.5" resizable="false" text="Won Matches" />
+            <TableColumn prefWidth="165.5" resizable="false" text="Played Matches" />
+        </columns>
+      </TableView>
+      <Label layoutX="464.0" layoutY="30.0" text="Ranking" textFill="WHITE" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

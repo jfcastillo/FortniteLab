@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-image: url('file:C:/Users/Sebastian/Desktop/Icesi/Estructuras/Repositorios/FortniteLab/data/matchmaking_background.jpg');" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="431.0" layoutY="14.0" text="Matchmaking" textFill="WHITE" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TableView layoutX="113.0" layoutY="66.0" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: 0000;" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn prefWidth="150.0" text="Username" />
+          <TableColumn prefWidth="75.0" text="Skill" />
+            <TableColumn prefWidth="75.0" text="Ping" />
+        </columns>
+      </TableView>
+      <TableView layoutX="107.0" layoutY="458.0" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: 0000;" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="400.0">
+         <columns>
+            <TableColumn prefWidth="150.0" text="Username" />
+            <TableColumn prefWidth="75.0" text="Skill" />
+            <TableColumn prefWidth="75.0" text="Ping" />
+         </columns>
+      </TableView>
+      <TableView layoutX="123.0" layoutY="76.0" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: 0000;" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0">
+         <columns>
+            <TableColumn prefWidth="150.0" text="Username" />
+            <TableColumn prefWidth="75.0" text="Skill" />
+            <TableColumn prefWidth="75.0" text="Ping" />
+         </columns>
+      </TableView>
+      <TableView layoutX="488.0" layoutY="480.0" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: 0000;" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="400.0">
+         <columns>
+            <TableColumn prefWidth="150.0" text="Username" />
+            <TableColumn prefWidth="75.0" text="Skill" />
+            <TableColumn prefWidth="75.0" text="Ping" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
