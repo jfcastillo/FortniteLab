@@ -42,7 +42,7 @@ class TestFornite {
 		
 		fortn.createPlayer("Sergio", Player.SWITCH);
 		
-		assertNotEquals(fortn.getActualPlayer(), player);
+		assertEquals(fortn.getActualPlayer().getName(), player.getName());
 		
 		
 	}

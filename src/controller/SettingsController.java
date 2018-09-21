@@ -55,14 +55,19 @@ public class SettingsController implements Initializable{
 		cbPlatform.getItems().add(PLATFORMS[0]);
 		cbPlatform.getItems().add(PLATFORMS[1]);
 		cbPlatform.getItems().add(PLATFORMS[2]);
-		for (int i = 0; i < 10000; i++) {
+//		for (int i = 0; i < 10000; i++) {
 			fortnite = new Fortnite();
-			Player playerToAdd = fortnite.generatorPlayer();
-			System.out.println(i+" "+playerToAdd.toString());
-			fortnite.addPlayerQueue(playerToAdd);
-			fortnite.addPlayersHash(playerToAdd);
+//			Player playerToAdd = fortnite.generatorPlayer();
+//			System.out.println(i+" "+playerToAdd.toString());
+//			fortnite.addPlayerQueue(playerToAdd);
+//			fortnite.addPlayersHash(playerToAdd);
+//		}
+		try {
+			fortnite.leerTxt();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 	}
 	@FXML
     void openMenu(ActionEvent event) {

@@ -17,6 +17,7 @@ public class Fortnite {
 	private Player actualPlayer;
 	private Player[] players2;
 	
+	
 	//------------------------------------------------------------------------------------
 
 	public Fortnite() {
@@ -275,13 +276,15 @@ public class Fortnite {
 	
 	public void leerTxt() throws IOException, ClassNotFoundException{
 		
-		 File f = new File("capsula.bin");
 		
-			FileInputStream fis =new FileInputStream( f );
+		
+			FileInputStream fis =new FileInputStream( "./data/randomPlayer.txt" );
 			ObjectInputStream leerObjeto =  new ObjectInputStream( fis );
 			int i=0;
 			while(i<10000){
 				Player m  = (Player) leerObjeto.readObject();
+				addPlayerQueue(m);
+				addPlayersHash(m);
 				players2[i]=m;
 				i++;
 			}

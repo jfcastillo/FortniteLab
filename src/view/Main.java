@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import model.Fortnite;
+import model.Match;
 import model.Player;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,6 +30,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		Player p1 = new Player("Juan", "PS4", "Inqueue");
+		Match m= new Match(23123, 21321, 231);
+		m.randomPlayers();
 //		Player p2 = new Player("Felipe", "PS4", "Inqueue");
 //		Player p3 = new Player("Castillo", "PS4", "Inqueue");
 //		Player p4 = new Player("Rincon", "PS4", "Inqueue");
@@ -55,6 +58,8 @@ public class Main extends Application {
 		}
 		System.out.println(list.size());
 		launch(args);		
+		
+		
 		
 		
 	}
