@@ -3,8 +3,10 @@ package model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import collections.*;
 
@@ -118,20 +120,21 @@ public class Fortnite {
 		System.out.println("pingmin "+pingMax);
 		boolean exit = false;
 		System.out.println("continue matchmaking");
-		
-		while (m.getSize()<=100) {
-			System.out.println("Empezó a buscar los 100 jugadores");
+		System.out.println("Empezó a buscar los 100 jugadores");
+		while (m.getSize()<100) {
+			
 			for (int i = pingMin; i < pingMax && !exit; i++) {
 				System.out.println(i);
 				if (m.getSize()==100) {
 					exit = true;
+					System.out.println("sali tamaño = 0");
 				}
 				else {
 					ILinkedList<HashEntry<Integer, Player>> list = players.tableRetrieve(i);
 					if (list.size()>0) {
 						for (int j = 0; j < list.size(); j++) {
-							double skillMin = list.get(i).getValue().getSkill()-4;
-							double skillMax = list.get(i).getValue().getSkill()+4;
+							double skillMin = list.get(j).getValue().getSkill()-4;
+							double skillMax = list.get(j).getValue().getSkill()+4;
 							System.out.println("list "+j );
 							if (m.getSize()==100) {
 								exit = true;
@@ -139,7 +142,7 @@ public class Fortnite {
 							
 							else if (skill>=skillMin && skill<=skillMax) {
 								System.out.println("entra a evaluar skills");
-								m.addPlayers(list.get(i).getValue());
+								m.addPlayers(list.get(j).getValue());
 							}
 						}
 					}
@@ -147,7 +150,7 @@ public class Fortnite {
 					
 				
 			}
-			
+			System.out.println("sigo recorriendo");
 		}
 		System.out.println("Terminó de encontrar los 100 jugadores");
 		for (int i = 0; i < m.getSize(); i++) {
@@ -289,13 +292,25 @@ public class Fortnite {
 				i++;
 			}
 			
-			leerObjeto.close();
-			
-		
-		 
-		
-		
-		
+			leerObjeto.close();	
+	}
+	public void randomPlayers() {
+
+		try {
+			File playerFile = new File("./data/randomPlayer.txt");
+			playerFile.createNewFile();
+			FileOutputStream outPlayer = new FileOutputStream(playerFile);
+			ObjectOutputStream objectPlayer = new ObjectOutputStream(outPlayer);
+			for (int i = 0; i < 10001; i++) {
+				objectPlayer.writeObject(generatorPlayer() + "\n");
+
+			}
+			objectPlayer.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 	
 	

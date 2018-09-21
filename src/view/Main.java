@@ -30,8 +30,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		Player p1 = new Player("Juan", "PS4", "Inqueue");
-		Match m= new Match(23123, 21321, 231);
-		m.randomPlayers();
+		Fortnite f = new Fortnite();
+//		f.randomPlayers();
 //		Player p2 = new Player("Felipe", "PS4", "Inqueue");
 //		Player p3 = new Player("Castillo", "PS4", "Inqueue");
 //		Player p4 = new Player("Rincon", "PS4", "Inqueue");
@@ -52,11 +52,8 @@ public class Main extends Application {
 //		for (int i = 90; i < 500;i++) {
 //			System.out.println(i%100003);
 //		}
-		ILinkedList<Integer> list = new List<>();
-		for (int i = 0; i < 10; i++) {
-			list.add(i);
-		}
-		System.out.println(list.size());
+		
+//		System.out.println(list.size());
 		launch(args);		
 		
 		

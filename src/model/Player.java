@@ -25,7 +25,7 @@ public class Player implements Comparable<Player>{
 		this.deaths=(int)(Math.random()*100)+1;
 		this.winMatchs=(int)(Math.random()*50);
 		this.matchsPlayed= (int)(Math.random()*100)+1;
-		this.ping= (int)(Math.random()*300)+1;		
+		this.ping= (int)(Math.random()*300)+1;			
 		this.status = status;
 		calculateSkill();
 	}
