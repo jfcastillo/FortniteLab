@@ -1,13 +1,22 @@
 package model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
 import collections.*;
 
 public class Fortnite {
 	
+	public static final int NUMBER_PLAYER=10000;
 	private ILinkedList<Match> matches;
 	private IQueue<Player> playerInQueue;
 	private IHashTable<Integer, Player> players;
 	private Player actualPlayer;
+	private Player[] players2;
+	
 	//------------------------------------------------------------------------------------
 
 	public Fortnite() {
@@ -16,6 +25,7 @@ public class Fortnite {
 		playerInQueue = new Queue<>();
 		players = new HashTable<>();
 		actualPlayer = null;
+		players2= new Player[NUMBER_PLAYER];
 	}
 
 	public ILinkedList<Match> getMatches() {
@@ -262,5 +272,31 @@ public class Fortnite {
             k++;
         }
     }
+	
+	public void leerTxt() throws IOException, ClassNotFoundException{
+		
+		 File f = new File("capsula.bin");
+		
+			FileInputStream fis =new FileInputStream( f );
+			ObjectInputStream leerObjeto =  new ObjectInputStream( fis );
+			int i=0;
+			while(i<10000){
+				Player m  = (Player) leerObjeto.readObject();
+				players2[i]=m;
+				i++;
+			}
+			
+			leerObjeto.close();
+			
+		
+		 
+		
+		
+		
+	}
+	
+	
+	
+	
 
 }
