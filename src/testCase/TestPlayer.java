@@ -4,17 +4,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import model.Match;
+import model.Player;
+
 class TestPlayer {
 
+Player player;
 	
-	
-	@Test
-	void testAddPlayerMatch() {
+	void escenario1() {
+		player = new Player("Sergio", Player.SWITCH, Player.NORMAL);
 		
 	}
+	
 	@Test
-	void testAddPlayerMatch2() {
-		fail("Not yet implemented");
+	void testCompareTo() {
+		escenario1();
+		Player p= new Player("sergio", Player.PS4, Player.IN_QUEUE);
+		player.compareTo(p);
+		assertTrue(player.compareTo(p)==1||player.compareTo(p)==-1);
 	}
+	
 
 }
