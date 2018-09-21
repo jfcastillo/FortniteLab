@@ -37,9 +37,11 @@ public class SettingsController implements Initializable{
     @FXML
     private Button btnOk;
 
-    
-    private MainViewController menu;
     private Fortnite fortnite;
+    private MainViewController menu;
+    private MatchmakingController matchmaking;
+    private RankingController ranking;
+    
     
 
 	public SettingsController() {
