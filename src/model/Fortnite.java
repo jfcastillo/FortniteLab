@@ -18,9 +18,12 @@ public class Fortnite {
 	private IHashTable<Integer, Player> players;
 	private Player actualPlayer;
 	private Player[] players2;
+	private Match actualMatch;
 	
 	
 	//------------------------------------------------------------------------------------
+
+	
 
 	public Fortnite() {
 		
@@ -29,6 +32,7 @@ public class Fortnite {
 		players = new HashTable<>();
 		actualPlayer = null;
 		players2= new Player[NUMBER_PLAYER];
+		actualMatch = null;
 	}
 
 	public ILinkedList<Match> getMatches() {
@@ -54,6 +58,9 @@ public class Fortnite {
 	public void setPlayers(IHashTable<Integer, Player> players) {
 		this.players = players;
 	}
+	public Match getActualMatch() {
+		return actualMatch;
+	}
 	
 	
 	public void addPlayersHash(Player playerToAdd) {
@@ -69,7 +76,7 @@ public class Fortnite {
 	}
 	public void addPlayerToMatch(Player playerToAdd, int idMatch) {
 		System.out.println("Inicio de emparejamiento");
-		Match newMatch = null;
+//		Match newMatch = null;
 		int pingMin = 0;
 		int pingMax = 0;
 		int playerPing = playerToAdd.getPing();
@@ -90,44 +97,41 @@ public class Fortnite {
 			pingMax = 400;
 		}
 		if (matches.size()==0) {
-			System.out.println("Tamaño igual a 0");
-			newMatch = new Match(idMatch, pingMin, pingMax);
-			newMatch.addPlayers(playerToAdd);
-			matches.add(newMatch);			
+			
+			actualMatch = new Match(idMatch, pingMin, pingMax);
+			actualMatch.addPlayers(playerToAdd);
+			matches.add(actualMatch);			
 		}
 		else {
 			Match m = searchMatch(pingMin);
-			System.out.println("Tamaño diferente a 0");
+			
 			if (m == null) {
-				newMatch = new Match(idMatch, pingMin, pingMax);
-				newMatch.addPlayers(playerToAdd);
-				matches.add(newMatch);	
+				actualMatch = new Match(idMatch, pingMin, pingMax);
+				actualMatch.addPlayers(playerToAdd);
+				matches.add(actualMatch);	
 			}
 			else {
 				m.addPlayers(playerToAdd);
 			}
 			
 		}
-		continueMatching(newMatch, playerToAdd);
+		continueMatching(playerToAdd);
 		
 		
 	}
-	public void continueMatching(Match m, Player playerToAdd) {
+	public void continueMatching(Player playerToAdd) {
 		double skill = playerToAdd.getSkill();
-		int pingMin = m.getPingMin();
-		int pingMax = m.getPingMax();
+		int pingMin = actualMatch.getPingMin();
+		int pingMax = actualMatch.getPingMax();
 		System.out.println("pingmin "+pingMin);
 		System.out.println("pingmin "+pingMax);
 		boolean exit = false;
-		System.out.println("continue matchmaking");
-		System.out.println("Empezó a buscar los 100 jugadores");
-		while (m.getSize()<100) {
+		while (actualMatch.getSize()<100) {
 			
 			for (int i = pingMin; i < pingMax && !exit; i++) {
 				System.out.println(i);
-				if (m.getSize()==100) {
+				if (actualMatch.getSize()==100) {
 					exit = true;
-					System.out.println("sali tamaño = 0");
 				}
 				else {
 					ILinkedList<HashEntry<Integer, Player>> list = players.tableRetrieve(i);
@@ -135,14 +139,13 @@ public class Fortnite {
 						for (int j = 0; j < list.size(); j++) {
 							double skillMin = list.get(j).getValue().getSkill()-4;
 							double skillMax = list.get(j).getValue().getSkill()+4;
-							System.out.println("list "+j );
-							if (m.getSize()==100) {
+							
+							if (actualMatch.getSize()==100) {
 								exit = true;
 							}
 							
 							else if (skill>=skillMin && skill<=skillMax) {
-								System.out.println("entra a evaluar skills");
-								m.addPlayers(list.get(j).getValue());
+								actualMatch.addPlayers(list.get(j).getValue());
 							}
 						}
 					}
@@ -150,12 +153,12 @@ public class Fortnite {
 					
 				
 			}
-			System.out.println("sigo recorriendo");
 		}
 		System.out.println("Terminó de encontrar los 100 jugadores");
-		for (int i = 0; i < m.getSize(); i++) {
-			System.out.println("E   M   P   A   R   E   J   A   M   I   E   N   T   O");
-			System.out.println(i+": "+m.getPlayers().get(i).toString());
+//		System.out.println("E   M   P   A   R   E   J   A   M   I   E   N   T   O");
+		for (int i = 0; i < actualMatch.getSize(); i++) {
+			
+			System.out.println(i+": "+actualMatch.getPlayers().get(i).toString());
 		}
 	}
 	

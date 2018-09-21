@@ -59,45 +59,14 @@ public class SettingsController implements Initializable{
 		cbPlatform.getItems().add(PLATFORMS[1]);
 		cbPlatform.getItems().add(PLATFORMS[2]);
 		fortnite = new Fortnite();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10000; i++) {
 			
 			Player playerToAdd = fortnite.generatorPlayer();
 			System.out.println(i+" "+playerToAdd.toString());
 			fortnite.addPlayerQueue(playerToAdd);
 			fortnite.addPlayersHash(playerToAdd);
 		} 
-//		Player p1 = new Player("Felipe", "PS4", Player.IN_QUEUE);
-//		Player p2 = new Player("Castillo", "PS4", Player.IN_QUEUE);
-//		Player p3 = new Player("Rincon", "PS4", Player.IN_QUEUE);
-//		Player p4 = new Player("Juan", "PS4", Player.IN_QUEUE);
-//		fortnite.addPlayersHash(p1);
-//		fortnite.addPlayersHash(p2);
-//		fortnite.addPlayersHash(p3);
-//		fortnite.addPlayersHash(p4);
-//		System.out.println(fortnite.getPlayers().tableRetrieve(100).size());
-//		System.out.println("----------------------------------------------");
-//		int pingMin = 0;
-//		int pingMax = 100;
-//		for (int i = pingMin; i < pingMax ; i++) {
-//			ILinkedList<HashEntry<Integer, Player>> list = fortnite.getPlayers().tableRetrieve(i);
-//			System.out.println("indice: "+i+" "+fortnite.getPlayers().tableRetrieve(i).size());
-////			System.out.println(i);
-//			if (list.size()>0) {
-//				for (int j = 0; j < list.size(); j++) {
-//					System.out.println("skill "+list.get(j).getValue().getSkill());
-//				}
-//				
-//			}
-//			
-//		}
-		
-		
-//		try {
-//			fortnite.leerTxt();
-//		} catch (ClassNotFoundException | IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 	}
 	@FXML
     void openMenu(ActionEvent event) {
@@ -145,6 +114,9 @@ public class SettingsController implements Initializable{
 		fortnite.addPlayerToMatch(fortnite.getActualPlayer(), (int)(Math.random()*100)+1);
 	}
 	
+	public Fortnite getFortnite() {
+		return fortnite;
+	}
 	
 	
 	
