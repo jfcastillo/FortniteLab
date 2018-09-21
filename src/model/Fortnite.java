@@ -158,6 +158,13 @@ public class Fortnite {
 			System.out.println(i+": "+m.getPlayers().get(i).toString());
 		}
 	}
+	
+	public void addPlayerToMatchPlatform(Player playerToAdd, int idMatch) {
+		
+	}
+	public void continueMatchingPlatform(Match m, Player playerToAdd) {
+		
+	}
 	public Match searchMatch(int pingMin) {
 		Match matchFound = null;
 		for (int i = 0; i < matches.size(); i++) {
