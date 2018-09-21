@@ -35,6 +35,8 @@ public class MainViewController implements Initializable{
     private Label lblUserName;
 
     private SettingsController settings;
+    private MatchmakingController matchmaking;
+    private RankingController ranking;
 	
 
 

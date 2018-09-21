@@ -39,8 +39,7 @@ public class SettingsController implements Initializable{
 
     private Fortnite fortnite;
     private MainViewController menu;
-    private MatchmakingController matchmaking;
-    private RankingController ranking;
+    
     
     
 
